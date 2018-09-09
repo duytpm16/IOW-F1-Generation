@@ -19,7 +19,7 @@ library(tidyr)
 
 
 ### Read in the original 850k data which contains the cell types, age at puberty onset, and DNAm data
-load("C:/Users/DUY/Desktop/Orig_F1_850k_796.RData")
+load("~/Original_F1_850k_Data.RData")
 
 
 ### Find overlapping study ids (subjects) in pubertyonset and celltype dataframes. 
