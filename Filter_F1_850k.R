@@ -1,6 +1,7 @@
 ####################################################################################################################
 #  This script is used to subset the puberty event, cell type, and DNAm data into males and females
-#         and making sure the study id are the same across the 3 data 
+#         and making sure the study id are the same across the 3 data. These subsets of data will be used
+#         for ttScreening.
 #
 #   Input:
 #       1.) .RData containing the puberty event, cell type, and DNAm data
