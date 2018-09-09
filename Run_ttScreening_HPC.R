@@ -43,11 +43,11 @@ if(gender == 'boy'){
    
    
    # Get puberty event
-   pubertyEvent <- boy_pubertyOnset %>% select(one_of(pubertyEvent)) %>% as.data.frame()  
+   pubertyEvent_df <- boy_pubertyOnset %>% select(one_of(pubertyEvent)) %>% as.data.frame()  
    
    
    # Combine pubtery event with celltype data, excluding study id and CD8T
-   tempData <- cbind(pubertyEvent,boy_cellType %>% select(-study_id, -CD8T))    
+   tempData <- cbind(pubertyEvent_df,boy_cellType %>% select(-study_id, -CD8T))    
 }
 
 if(gender == 'girl'){
@@ -57,11 +57,11 @@ if(gender == 'girl'){
    
    
    # Get puberty event
-   pubertyEvent <- girl_pubertyOnset %>% select(one_of(pubertyEvent)) %>% as.data.frame()  
+   pubertyEvent_df <- girl_pubertyOnset %>% select(one_of(pubertyEvent)) %>% as.data.frame()  
   
    
    # Combine pubtery event with celltype data, excluding study id and CD8T
-   tempData <- cbind(pubertyEvent,girl_cellType %>% select(-study_id, -CD8T)) 
+   tempData <- cbind(pubertyEvent_df,girl_cellType %>% select(-study_id, -CD8T)) 
 }
 
 
