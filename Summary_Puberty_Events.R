@@ -34,7 +34,7 @@ pubertyonset_filtered <- pubertyonset %>%
 
 
 
-### Subset pubertyonset into boys and girls
+### Subset and filter pubertyonset into boys and girls
 #
 #       girls: 395 x 7
 #       boys:  401 x 7
