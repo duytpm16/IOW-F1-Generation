@@ -27,7 +27,7 @@ load("~/Original_F1_850k_Data.RData")
 #         Overlapping study ids:  796
 #         Original puberty onset to filtered: 1536 x 12 -> 796 x 12
 #         Original celltype to filtered:      796 x 8 -> 796 x 8
-overlap_samples <- intersect(pubertonset$STUDYid, celltype$studyid)
+overlap_samples <- intersect(pubertyonset$STUDYid, celltype$studyid)
 
 pubertyonset_filtered <- pubertyonset %>% 
                             filter(STUDYid %in% overlap_samples)
