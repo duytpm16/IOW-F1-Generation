@@ -1,10 +1,6 @@
 #PBS -l nodes=1:ppn=12
 #PBS -q batch
 
-cd /home/dtpham/F1_850k
-module load R/3.5.0
-
-
 #################################################################################################################
 #  Shell script to run Run_ttScreening_HPC.R
 #
@@ -17,6 +13,10 @@ module load R/3.5.0
 #     1.) .rds file containing the ttScreening output.
 #	    Name of file will be 'tt_name of puberty event column.rds'
 ################################################################################################################
+
+cd /home/dtpham/F1_850k
+module load R/3.5.0
+
 
 ### Boys
 #Rscript Run_ttScreening_HPC.R ~/F1_850k/Boys_F1_850k_Filtered_401.RData boy AGEBODYHAIRMALE_18
