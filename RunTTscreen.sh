@@ -21,7 +21,7 @@ module load R/3.5.0
 ### Boys
 #Rscript Run_ttScreening_HPC.R ~/F1_850k/Boys_F1_850k_Filtered_401.RData boy AGEBODYHAIRMALE_18
 #Rscript Run_ttScreening_HPC.R ~/F1_850k/Boys_F1_850k_Filtered_401.RData boy AGEDEEPENINGVOICEMALE_18
-#script Run_ttScreening_HPC.R ~/F1_850k/Boys_F1_850k_Filtered_401.RData boy AGEFACIALHAIRMALE_18
+#Rscript Run_ttScreening_HPC.R ~/F1_850k/Boys_F1_850k_Filtered_401.RData boy AGEFACIALHAIRMALE_18
 #Rscript Run_ttScreening_HPC.R ~/F1_850k/Boys_F1_850k_Filtered_401.RData boy AGEGROWTHSPURTMALE_18
 #Rscript Run_ttScreening_HPC.R ~/F1_850k/Boys_F1_850k_Filtered_401.RData boy AGESKINCHANGESMALE_18
 
@@ -31,4 +31,4 @@ module load R/3.5.0
 #Rscript Run_ttScreening_HPC.R ~/F1_850k/Girls_F1_850k_Filtered_395.RData girl AGEBREASTGROWTHFEMALE_18
 #Rscript Run_ttScreening_HPC.R ~/F1_850k/Girls_F1_850k_Filtered_395.RData girl AGEGROWTHSPURTFEMALE_18
 #Rscript Run_ttScreening_HPC.R ~/F1_850k/Girls_F1_850k_Filtered_395.RData girl AGEPERIODFEMALE_18
-Rscript Run_ttScreening_HPC.R ~/F1_850k/Girls_F1_850k_Filtered_395.RData girl AGESKINCHANGESFEMALE_18
+#Rscript Run_ttScreening_HPC.R ~/F1_850k/Girls_F1_850k_Filtered_395.RData girl AGESKINCHANGESFEMALE_18
