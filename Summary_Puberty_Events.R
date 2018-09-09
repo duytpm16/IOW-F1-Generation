@@ -32,7 +32,9 @@ boy_pubertyOnset <- pubertyonset_filtered %>%
                                   
 
 
-### Summarizing the original pubertyOnset data (All the cohort) for girls
+### Summarizing the data
+
+### Summary for each puberty event in girls without filter
 girl_pubertyOnset_summary <- pubertyonset %>% 
                                     filter(SEX_18 == 'Female') %>%
                                     select(AGEGROWTHBODYHAIRFEMALE_18,AGEBREASTGROWTHFEMALE_18, 
@@ -46,7 +48,7 @@ girl_pubertyOnset_summary <- pubertyonset %>%
                                            sd = sprintf("%0.2f", sd))
 
 
-### Summarize the filtered pubertyOnset data for girls                  
+### Summary for each puberty event in girls after filtering                
 girl_filteredPubertyOnset_summary <- girl_pubertyOnset %>%
                                           select(-study_id,-sex) %>%
                                           gather(.) %>%                                     # Turn wide dataframe to long
@@ -75,7 +77,7 @@ boy_pubertyOnset_summary <- pubertyonset %>%
 
 
 
-### Summarize the filtered pubertyOnset data for boys 
+### Summary of each puberty events for boys after filtering
 boys_filteredPubertyOnset_summary <- boy_pubertyOnset %>%
                                             select(-study_id,-sex) %>%
                                             gather(.) %>%                                     # Turn wide dataframe to long
