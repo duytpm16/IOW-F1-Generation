@@ -1,16 +1,16 @@
 #################################################################################################################################
-### This script summarizes each puberty event for boys and girls
+#   This script summarizes each puberty event for boys and girls
 #
-### Input:
+#   Input:
 #      1.) puberty event data
 #      2.) cell type data
 #
-### Output:
+#   Output:
 #      1.) .xlsx file containing entire puberty data (1), subset by gender (2), summaries for (2)
 #               and 2 more summaries for overlapping subjects in puberty event and cell type data by gender
 #
-### Author: Duy Pham
-### E-mail: dtpham@memphis.edu
+#   Author: Duy Pham
+#   E-mail: dtpham@memphis.edu
 ####################################################################################################################################
 options(stringsAsFactors = FALSE)
 library(dplyr)
