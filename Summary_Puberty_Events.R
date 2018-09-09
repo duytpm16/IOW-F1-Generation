@@ -1,6 +1,17 @@
-### Summarizing each puberty event for boys and girls
-
-
+#################################################################################################################################
+### This script summarizes each puberty event for boys and girls
+#
+### Input:
+#      1.) puberty event data
+#      2.) cell type data
+#
+### Output:
+#      1.) .xlsx file containing entire puberty data (1), subset by gender (2), summaries for (2)
+#               and 2 more summaries for overlapping subjects in puberty event and cell type data by gender
+#
+### Author: Duy Pham
+### E-mail: dtpham@memphis.edu
+####################################################################################################################################
 options(stringsAsFactors = FALSE)
 library(dplyr)
 library(tidyr)
@@ -49,7 +60,7 @@ boy_pubertyOnset <- pubertyonset_filtered %>%
 
 ### Summarizing the data
 
-### Summary for each puberty event in girls without filter
+### Summary of each puberty event for girls without filtering
 girl_pubertyOnset_summary <- pubertyonset %>% 
                                     filter(SEX_18 == 'Female') %>%
                                     select(AGEGROWTHBODYHAIRFEMALE_18,AGEBREASTGROWTHFEMALE_18, 
@@ -62,7 +73,7 @@ girl_pubertyOnset_summary <- pubertyonset %>%
                                     mutate(mean = sprintf("%0.2f", mean),             # Round mean and sd column to 2 decimal
                                            sd = sprintf("%0.2f", sd)) %>% as.data.frame()
 
-### Summary for each puberty event in girls after filtering                
+### Summary of each puberty event for girls after filtering                
 girl_filteredPubertyOnset_summary <- girl_pubertyOnset %>%
                                           select(-study_id,-sex) %>%
                                           gather(.) %>%                                     # Turn wide dataframe to long
