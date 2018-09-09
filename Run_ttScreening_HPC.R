@@ -55,6 +55,7 @@ if(gender == 'girl'){
    rm(girl_DNAm)                          # Removing original DNAm 
    DNAm <- data.matrix(t(DNAm))           # Transposing DNAm data for ttScreening: subjects x CpG
    
+   
    # Get puberty event
    pubertyEvent <- girl_pubertyOnset %>% select(one_of(pubertyEvent)) %>% as.data.frame()  
   
