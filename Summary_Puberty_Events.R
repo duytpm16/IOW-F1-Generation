@@ -4,7 +4,7 @@
 options(stringsAsFactors = FALSE)
 library(dplyr)
 library(tidyr)
-
+library(xlsx)
 
 ### Load in the puberty event data
 pubertyonset <- read.csv('puberty_data_F1_generation.csv')
@@ -45,7 +45,7 @@ girl_pubertyOnset_summary <- pubertyonset %>%
                                     group_by(key) %>%                                 # Group by each puberty event
                                     summarise_all(funs(n(), mean, sd, min,max)) %>%   # Summary of each puberty event
                                     mutate(mean = sprintf("%0.2f", mean),             # Round mean and sd column to 2 decimal
-                                           sd = sprintf("%0.2f", sd))
+                                           sd = sprintf("%0.2f", sd)) %>% as.data.frame()
 
 
 ### Summary for each puberty event in girls after filtering                
@@ -56,7 +56,7 @@ girl_filteredPubertyOnset_summary <- girl_pubertyOnset %>%
                                           group_by(key) %>%                                 # Group by each puberty event
                                           summarise_all(funs(n(), mean, sd, min,max)) %>%   # Summary of each puberty event
                                           mutate(mean = sprintf("%0.2f", mean),             # Round mean and sd column to 2 decimal
-                                                 sd = sprintf("%0.2f", sd))
+                                                 sd = sprintf("%0.2f", sd)) %>% as.data.frame()
 
 
 
@@ -73,17 +73,27 @@ boy_pubertyOnset_summary <- pubertyonset %>%
                                     group_by(key) %>%                                       # Group by each puberty event
                                     summarise_all(funs(n(), mean, sd, min,max)) %>%         # Summary of each puberty event
                                     mutate(mean = sprintf("%0.2f", mean),                   # Round mean and sd column to 2 decimal
-                                           sd = sprintf("%0.2f", sd))
+                                           sd = sprintf("%0.2f", sd)) %>% as.data.frame()
 
 
 
 ### Summary of each puberty events for boys after filtering
-boys_filteredPubertyOnset_summary <- boy_pubertyOnset %>%
+boy_filteredPubertyOnset_summary <- boy_pubertyOnset %>%
                                             select(-study_id,-sex) %>%
                                             gather(.) %>%                                     # Turn wide dataframe to long
                                             filter(complete.cases(.)) %>%                     # Remove NAs (for summary functions)
                                             group_by(key) %>%                                 # Group by each puberty event
                                             summarise_all(funs(n(), mean, sd, min,max)) %>%   # Summary of each puberty event
                                             mutate(mean = sprintf("%0.2f", mean),             # Round mean and sd column to 2 decimal
-                                                   sd = sprintf("%0.2f", sd))
+                                                   sd = sprintf("%0.2f", sd)) %>% as.data.frame()
 
+
+
+### Save data to .xlsx file
+write.xlsx(pubertyonset, file = 'Summary_Pubert_Events.xlsx', sheetName = 'PubertEvents', row.names = FALSE)
+write.xlsx(girl_pubertyOnset, file = 'Summary_Pubert_Events.xlsx', sheetName = 'Girl_PubertEvents', row.names = TRUE, append = TRUE)
+write.xlsx(boy_pubertyOnset, file = 'Summary_Pubert_Events.xlsx', sheetName = 'Boy_PubertEvents', row.names = TRUE, append = TRUE)
+write.xlsx(girl_pubertyOnset_summary, file = 'Summary_Pubert_Events.xlsx', sheetName = 'All_Girls', row.names = FALSE, append = TRUE)
+write.xlsx(girl_filteredPubertyOnset_summary, file = 'Summary_Pubert_Events.xlsx', sheetName = 'Filtered_Girls', row.names = FALSE, append = TRUE)
+write.xlsx(boy_pubertyOnset_summary, file = 'Summary_Pubert_Events.xlsx', sheetName = 'All_Boys', row.names = FALSE, append = TRUE)
+write.xlsx(boy_filteredPubertyOnset_summary, file = 'Summary_Pubert_Events.xlsx', sheetName = 'Filtered_Boys', row.names = FALSE, append = TRUE)
