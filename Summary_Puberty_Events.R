@@ -113,9 +113,9 @@ boy_filteredPubertyOnset_summary <- boy_pubertyOnset %>%
 
 
 ### Save data to .xlsx file
-write.xlsx(pubertyonset, file = 'Summary_Pubert_Events.xlsx', sheetName = 'PubertEvents', row.names = FALSE)
-write.xlsx(girl_pubertyOnset, file = 'Summary_Pubert_Events.xlsx', sheetName = 'Girl_PubertEvents', row.names = TRUE, append = TRUE)
-write.xlsx(boy_pubertyOnset, file = 'Summary_Pubert_Events.xlsx', sheetName = 'Boy_PubertEvents', row.names = TRUE, append = TRUE)
+write.xlsx(pubertyonset, file = 'Summary_Pubert_Events.xlsx', sheetName = 'PubertyEvents', row.names = FALSE)
+write.xlsx(girl_pubertyOnset, file = 'Summary_Pubert_Events.xlsx', sheetName = 'Girl_PubertyEvents', row.names = TRUE, append = TRUE)
+write.xlsx(boy_pubertyOnset, file = 'Summary_Pubert_Events.xlsx', sheetName = 'Boy_PubertyEvents', row.names = TRUE, append = TRUE)
 write.xlsx(girl_pubertyOnset_summary, file = 'Summary_Pubert_Events.xlsx', sheetName = 'All_Girls', row.names = FALSE, append = TRUE)
 write.xlsx(girl_filteredPubertyOnset_summary, file = 'Summary_Pubert_Events.xlsx', sheetName = 'Filtered_Girls', row.names = FALSE, append = TRUE)
 write.xlsx(boy_pubertyOnset_summary, file = 'Summary_Pubert_Events.xlsx', sheetName = 'All_Boys', row.names = FALSE, append = TRUE)
