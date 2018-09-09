@@ -1,4 +1,21 @@
-# Load  ttScreening library
+####################################################################################################################################
+#  This script runs the ttScreening function on the HPC given the required input data below
+#
+#  Input:
+#     1.) Path to .RData file containing puberty onset, cell type, and DNAm data
+#     2.) Which gender: 'boy' or 'girl'
+#     3.) Name of puberty event column to run ttScreening on
+#
+#  Output:
+#     1.) .rds file containing the ttScreening output.
+#           Name of file will be 'tt_name of puberty event.rds'
+#
+#  Author: Duy Pham
+#  E-mail: dtpham@memphis.edu
+####################################################################################################################################
+
+### Load libraries
+options(stringsAsFactors = FALSE)
 library(ttScreening)
 library(dplyr)
 
@@ -10,7 +27,7 @@ args = commandArgs(trailingOnly=TRUE)
 ### Variables to change
 #     1.) Path to .RData containing puberty onset, DNAm, cell type data for one gender
 #     2.) Which gender: 'boy' or 'girl'
-#     3.) Which puberty event to run ttScreening on
+#     3.) Name of puberty event column to run ttScreening on
 load(as.character(args[1]))
 gender = args[2]
 pubertyEvent = args[3]
@@ -20,16 +37,17 @@ pubertyEvent = args[3]
 
 ### Prepare data based on gender
 if(gender == 'boy'){
-   DNAm <- log2(boy_DNAm/(1-boy_DNAm))  # Logit-transformation
+   DNAm <- log2(boy_DNAm/(1-boy_DNAm))  # Logit-transformation of DNAm data
    rm(boy_DNAm)                         # Removing original DNAm 
    DNAm <- data.matrix(t(DNAm))         # Transposing DNAm data for ttScreening: subjects x CpG
    
-   pubertyEvent <- boy_pubertyOnset %>% select(one_of(pubertyEvent)) %>% as.data.frame()  # Get puberty event
+   
+   # Get puberty event
+   pubertyEvent <- boy_pubertyOnset %>% select(one_of(pubertyEvent)) %>% as.data.frame()  
    
    
    # Combine pubtery event with celltype data, excluding study id and CD8T
-   tempData <- cbind(pubertyEvent,boy_cellType %>% select(-study_id, -CD8T))  
-   
+   tempData <- cbind(pubertyEvent,boy_cellType %>% select(-study_id, -CD8T))    
 }
 
 if(gender == 'girl'){
@@ -37,7 +55,8 @@ if(gender == 'girl'){
    rm(girl_DNAm)                          # Removing original DNAm 
    DNAm <- data.matrix(t(DNAm))           # Transposing DNAm data for ttScreening: subjects x CpG
    
-   pubertyEvent <- girl_pubertyOnset %>% select(one_of(pubertyEvent)) %>% as.data.frame()  # Get puberty event
+   # Get puberty event
+   pubertyEvent <- girl_pubertyOnset %>% select(one_of(pubertyEvent)) %>% as.data.frame()  
   
    
    # Combine pubtery event with celltype data, excluding study id and CD8T
