@@ -8,7 +8,7 @@ library(xlsx)
 
 ### Load in the puberty event data
 pubertyonset <- read.csv('puberty_data_F1_generation.csv')
-
+celltype <- read.csv('~/F1_guthrie850k_cell_24march2018')
 
 
 ### Subset pubertyonset into boys and girls
