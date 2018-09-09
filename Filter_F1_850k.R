@@ -1,14 +1,28 @@
+####################################################################################################################
+#  This script is used to subset the puberty event, cell type, and DNAm data into males and females
+#         and making sure the study id are the same across the 3 data 
+#
+#   Input:
+#       1.) .RData containing the puberty event, cell type, and DNAm data
+#
+#   Output:
+#       1.) .RData containing the puberty event, cell type, and DNAm data for female subjects
+#       2.) .RData containing the puberty evetn, cell type, and DNAM data for male subjects
+#
+#   Author: Duy Pham
+#   E-mail: dtpham@memphis.edu
+#################################################################################################################
 options(stringsAsFactors = FALSE)
 library(dplyr)
 library(tidyr)
 
 
 
-### Read in the Orig 850k data which contains the cell types, age at puberty onset, and DNAm data
+### Read in the original 850k data which contains the cell types, age at puberty onset, and DNAm data
 load("C:/Users/DUY/Desktop/Orig_F1_850k_796.RData")
 
 
-### Find overlapping study id (subjects) in pubertyonset and celltype dataframes. 
+### Find overlapping study ids (subjects) in pubertyonset and celltype dataframes. 
 #     Then subset data to contain the same subjects.
 #         Overlapping study ids:  796
 #         Original puberty onset to filtered: 1536 x 12 -> 796 x 12
@@ -72,6 +86,9 @@ boy_cellType <- celltype_filtered %>%
 
 
 ### Filtering the DNAm data: 551710 x 796
+#
+#       After filtering for girls: 551710 x 395
+#       After filtering for boys:  551710 x 401
 girl_DNAm <- dnam %>% 
                 select(colnames(.)[colnames(.) %in% girl_pubertyOnset$study_id])
 
@@ -81,6 +98,7 @@ boy_DNAm <- dnam %>%
 
 
 
+### Save the data for boys and girls
 save(boy_cellType, boy_DNAm, boy_pubertyOnset, file = 'Boys_F1_850k_Filtered_401.RData')
 save(girl_cellType, girl_DNAm, girl_pubertyOnset, file = 'Girls_F1_850k_Filtered_395.RData')
 
