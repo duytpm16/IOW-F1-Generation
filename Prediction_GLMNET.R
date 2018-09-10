@@ -1,5 +1,5 @@
 ###################################################################################################################
-#  This script contains the glmnet_function which uses the glmnet package for prediction
+#  This script contains the glmnet_prediction function which uses the glmnet package for prediction
 #
 #  Parameters: 
 #     1.) y: n x 1 matrix containing the values for the response variable
