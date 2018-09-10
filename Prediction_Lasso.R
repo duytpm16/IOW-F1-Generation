@@ -73,7 +73,7 @@ glmnet_function <- function(y, x, split, alpha, penalty.factor = NULL){
 #      period_dnam: 359 x 299
 #      period_cellType: 359 x 8
 #      period_data: 359 x 1
-load('~/Menarache_Prediction_Data.Rdata')
+load('~/Menarache_Prediction_Data.RData')
 
 
 
