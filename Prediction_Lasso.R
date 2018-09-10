@@ -18,7 +18,7 @@ options(stringsAsFactors = FALSE)
 library(glmnet)
 library(dplyr)
 
-glmnet_function <- function(y, x, split, alpha, penalty.factor = NULL){
+glmnet_prediction <- function(y, x, split, alpha, penalty.factor = NULL){
    
       # Create index from 1:nrow(y). Used to split data into training and testing
       index <- 1:nrow(y)
@@ -123,25 +123,25 @@ period_data_sub <- period_data[rownames(period_data) %in% rownames(bw), ,drop = 
 
 
 ### Lasso (L)
-L_bw_dnam <- glmnet_function(as.matrix(period_data_sub), as.matrix(bw_dnam), 
-                             split = .8, 
-                             alpha = 1, 
-                             penalty.factor = c(0,rep(1,ncol(bw_dnam) - 1)))
+L_bw_dnam <- glmnet_prediction(as.matrix(period_data_sub), as.matrix(bw_dnam), 
+                               split = .8, 
+                               alpha = 1, 
+                               penalty.factor = c(0,rep(1,ncol(bw_dnam) - 1)))
 
-L_bw_celltype_dnam <- glmnet_function(as.matrix(period_data_sub), as.matrix(bw_celltype_dnam), 
-                                      split = .8, 
-                                      alpha = 1, 
-                                      penalty.factor = c(0,0,0,0,0,0,0,rep(1,ncol(bw_celltype_dnam) - 7)))
+L_bw_celltype_dnam <- glmnet_prediction(as.matrix(period_data_sub), as.matrix(bw_celltype_dnam), 
+                                        split = .8, 
+                                        alpha = 1, 
+                                        penalty.factor = c(0,0,0,0,0,0,0,rep(1,ncol(bw_celltype_dnam) - 7)))
 
-L_dnam <- glmnet_function(as.matrix(period_data), as.matrix(period_dnam), 
-                          split = .8, 
-                          alpha = 1)
+L_dnam <- glmnet_prediction(as.matrix(period_data), as.matrix(period_dnam), 
+                            split = .8, 
+                            alpha = 1)
 
 
-L_celltype_dnam <- glmnet_function(as.matrix(period_data), as.matrix(celltype_dnam), 
-                                   split = .8, 
-                                   alpha = 1, 
-                                   penalty.factor = c(0,0,0,0,0,0,rep(1,ncol(celltype_dnam) - 6)))
+L_celltype_dnam <- glmnet_prediction(as.matrix(period_data), as.matrix(celltype_dnam), 
+                                     split = .8, 
+                                     alpha = 1, 
+                                     penalty.factor = c(0,0,0,0,0,0,rep(1,ncol(celltype_dnam) - 6)))
 
 
 
@@ -150,24 +150,24 @@ L_celltype_dnam <- glmnet_function(as.matrix(period_data), as.matrix(celltype_dn
 
 
 ### Elastic Net (E)
-E_bw_dnam <- glmnet_function(as.matrix(period_data_sub), as.matrix(bw_dnam), 
-                             split = .8, 
-                             alpha = .5, 
-                             penalty.factor = c(0,rep(1,ncol(bw_dnam) - 1)))
+E_bw_dnam <- glmnet_prediction(as.matrix(period_data_sub), as.matrix(bw_dnam), 
+                               split = .8, 
+                               alpha = .5, 
+                               penalty.factor = c(0,rep(1,ncol(bw_dnam) - 1)))
 
 
-E_bw_celltype_dnam <- glmnet_function(as.matrix(period_data_sub), as.matrix(bw_celltype_dnam), 
-                                      split = .8, 
-                                      alpha = .5, 
-                                      penalty.factor = c(0,0,0,0,0,0,0,rep(1,ncol(bw_celltype_dnam) - 7)))
+E_bw_celltype_dnam <- glmnet_prediction(as.matrix(period_data_sub), as.matrix(bw_celltype_dnam), 
+                                        split = .8, 
+                                        alpha = .5, 
+                                        penalty.factor = c(0,0,0,0,0,0,0,rep(1,ncol(bw_celltype_dnam) - 7)))
 
 
-E_dnam <- glmnet_function(as.matrix(period_data), as.matrix(period_dnam), 
-                          split = .8, 
-                          alpha = .5)
+E_dnam <- glmnet_prediction(as.matrix(period_data), as.matrix(period_dnam), 
+                            split = .8, 
+                            alpha = .5)
 
 
-E_celltype_dnam <- glmnet_function(as.matrix(period_data), as.matrix(celltype_dnam), 
-                                   split = .8, 
-                                   alpha = .5, 
-                                   penalty.factor = c(0,0,0,0,0,0,rep(1,ncol(celltype_dnam) - 6)))
+E_celltype_dnam <- glmnet_prediction(as.matrix(period_data), as.matrix(celltype_dnam), 
+                                     split = .8, 
+                                     alpha = .5, 
+                                     penalty.factor = c(0,0,0,0,0,0,rep(1,ncol(celltype_dnam) - 6)))
