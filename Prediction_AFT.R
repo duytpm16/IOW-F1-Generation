@@ -40,7 +40,7 @@ aft_prediction <- function(var, y, x, split){
         # Randomly select split percentage from index
         trainInd <- sample(index, index_length * split)
       
-        # Use the randomly selected 80% row indices to get data for the training set
+        # Split data into training/testing based on split
         train_surv_mat <- surv_mat[trainInd,]
         test_surv_mat <- surv_mat[index[-trainInd],]
     
