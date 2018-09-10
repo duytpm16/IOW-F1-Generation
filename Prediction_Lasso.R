@@ -40,11 +40,11 @@ glmnet_function <- function(y, x, split, alpha, penalty.factor = NULL){
       # For-loop to iterate lasso regression 100 times
       for(i in 1:100){
 
-
+          # Randomly select indices based on split percentage
           trainInd <- sample(index, length(index)*split)
             
           
-          # Keep the 80% as training data and the remaining (20%) as testing
+          # Splitting data into training and testing
           train_y <- y[trainInd,, drop = FALSE]
           train_x <- x[trainInd,, drop = FALSE]
           test_y <-  y[index[-trainInd],,drop = FALSE]
