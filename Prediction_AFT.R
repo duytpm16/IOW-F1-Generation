@@ -1,3 +1,17 @@
+###################################################################################################################
+#  This script contains the aft_prediction function which uses the survival package for prediction using the
+#       AFT model.
+#
+#  Parameters: 
+#     1.) var: name of the column for the response variable
+#     2.) y: n x 1 matrix containing the values for the response variable. Must contain response variable and 'status' columns
+#     3.) x: n x m matrix containing predictor variables
+#     4.) split: percent to split data into training set. 
+#
+#
+#  Author: Duy Pham
+#  E-mail: dtpham@memphis.edu
+###################################################################################################################
 options(stringsAsFactors = FALSE)
 library(survival)
 library(dplyr)
