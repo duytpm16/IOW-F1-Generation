@@ -1,3 +1,18 @@
+###################################################################################################################
+#  This script contains the glmnet_function which uses the glmnet package for prediction
+#
+#  Parameters: 
+#     1.) y: n x 1 matrix containing the values for the response variable
+#     2.) x: n x m matrix containing predictor variables
+#     3.) split: percent to split data into training set. 
+#     4.) alpha: 0, 0.5, 1 for ridge regression, enet, or lasso
+#     5.) penalty.factor (optional): vector of 0 and 1 to tell cv.glmnet which variables to apply shrinkage on
+#                                     0 = no shrinkage and 1 = apply shrinkage
+#
+#
+#  Author: Duy Pham
+#  E-mail: dtpham@memphis.edu
+###################################################################################################################
 options(stringsAsFactors = FALSE)
 
 library(glmnet)
