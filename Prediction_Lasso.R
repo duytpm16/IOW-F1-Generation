@@ -22,7 +22,7 @@ glmnet_prediction <- function(y, x, split, alpha, penalty.factor = NULL){
    
       # Create index from 1:nrow(y). Used to split data into training and testing
       index <- 1:nrow(y)
-  
+      index_length <- length(index)
       
       # If no penalty.factor is given, allow shrinkage on all variables
       if(is.null(penalty.factor)){
@@ -41,7 +41,7 @@ glmnet_prediction <- function(y, x, split, alpha, penalty.factor = NULL){
       for(i in 1:100){
 
           # Randomly select indices based on split percentage
-          trainInd <- sample(index, length(index)*split)
+          trainInd <- sample(index, index_length * split)
             
           
           # Splitting data into training and testing
