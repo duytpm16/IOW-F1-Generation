@@ -39,7 +39,7 @@ pubertyEvent = args[3]
 if(gender == 'boy'){
    DNAm <- log2(boy_DNAm/(1-boy_DNAm))  # Logit-transformation of DNAm data
    rm(boy_DNAm)                         # Removing original DNAm 
-   DNAm <- data.matrix(t(DNAm))         # Transposing DNAm data for ttScreening: subjects x CpG
+   DNAm <- data.matrix(DNAm)            # Transposing DNAm data for ttScreening: subjects x CpG
    
    
    # Get puberty event
@@ -53,7 +53,7 @@ if(gender == 'boy'){
 if(gender == 'girl'){
    DNAm <- log2(girl_DNAm/(1-girl_DNAm))  # Logit-transformation
    rm(girl_DNAm)                          # Removing original DNAm 
-   DNAm <- data.matrix(t(DNAm))           # Transposing DNAm data for ttScreening: subjects x CpG
+   DNAm <- data.matrix(DNAm)           # Transposing DNAm data for ttScreening: subjects x CpG
    
    
    # Get puberty event
