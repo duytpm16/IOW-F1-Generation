@@ -1,6 +1,6 @@
 ####################################################################################################################################
 #  This script runs the ttScreening function on the HPC given the required input data below
-#
+#      for the IOW cohort F1-generation.
 #  Input:
 #     1.) Path to .RData file containing puberty onset, cell type, and DNAm data
 #     2.) Which gender: 'boy' or 'girl'
@@ -25,7 +25,7 @@ args = commandArgs(trailingOnly=TRUE)
 
 
 ### Variables to change
-#     1.) Path to .RData containing puberty onset, DNAm, cell type data for one gender
+#     1.) Path to .RData containing puberty onset, DNAm, and cell type data for one gender
 #     2.) Which gender: 'boy' or 'girl'
 #     3.) Name of puberty event column to run ttScreening on
 load(as.character(args[1]))
@@ -46,7 +46,7 @@ if(gender == 'boy'){
    pubertyEvent_df <- boy_pubertyOnset %>% select(one_of(pubertyEvent)) %>% as.data.frame()  
    
    
-   # Combine pubtery event with celltype data, excluding study id and CD8T
+   # Combine puberty event with celltype data, excluding study id and CD8T
    tempData <- cbind(pubertyEvent_df,boy_cellType %>% select(-study_id, -CD8T))    
 }
 
@@ -60,7 +60,7 @@ if(gender == 'girl'){
    pubertyEvent_df <- girl_pubertyOnset %>% select(one_of(pubertyEvent)) %>% as.data.frame()  
   
    
-   # Combine pubtery event with celltype data, excluding study id and CD8T
+   # Combine puberty event with celltype data, excluding study id and CD8T
    tempData <- cbind(pubertyEvent_df,girl_cellType %>% select(-study_id, -CD8T)) 
 }
 
