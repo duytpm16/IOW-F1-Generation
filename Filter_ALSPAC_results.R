@@ -3,7 +3,7 @@ options(stringsAsFactors = FALSE)
 library(tidyverse)
 
 
-epic <- read.csv("C:/Users/DUY/Desktop/F1_850k Data/Original Data/MethylationEPIC_v-1-0_B2 YJ.csv")
+epic <- read.csv("~/MethylationEPIC_v-1-0_B2 YJ.csv")
 
 ### Read in ALSPEC data
 #
