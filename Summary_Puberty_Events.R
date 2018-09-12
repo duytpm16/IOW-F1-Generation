@@ -16,7 +16,7 @@ options(stringsAsFactors = FALSE)
 library(dplyr)
 library(tidyr)
 library(xlsx)
-
+library(psych)
 
 
 ### Load in the puberty event data
@@ -113,10 +113,9 @@ boy_filteredPubertyOnset_summary <- boy_pubertyOnset %>%
 
 
 ### Cronbach's alpha
-reliability(cov(data.matrix(boy_pubertyOnset[,3:7]), use = "complete.obs")) # .76
-reliability(cov(data.matrix(boy_pubertyOnset[,3:7]), use = "pairwise.complete.obs")) # .78
-reliability(cov(data.matrix(girl_pubertyOnset[,3:7]), use = "complete.obs")) # .85
-reliability(cov(data.matrix(girl_pubertyOnset[,3:7]), use = "pairwise.complete.obs")) # .83
+### Cronbach's alpha
+alpha(boy_pubertyOnset[,3:7]) # .76 raw 
+alpha(girl_pubertyOnset[,3:7]) # .83 raw
 
 
 
