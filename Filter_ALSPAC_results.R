@@ -13,12 +13,12 @@ menarche_alspac <- read.csv("Pheno_menarche_ALSPAC_results.csv")[,-c(1,2)]
 testes_alspac <- read.csv("tanner_Pheno_testes_multilevel_ALSPAC_results.csv")[,-c(1,2)]
 
 
-### Get CpGs from Alspec menarche data
+### Get CpGs from Alspec menarche result
 query_cpgs <- menarche_alspac$CpG
 
 
 
-#  Merge menarche_alspec and anno together. Then filter
+#  Merge menarche_alspec and epic together. Then filter
 #
 #     menarche_alspac: 31 x 6
 menarche_alspac <- merge(menarche_alspac, epic[,c('Name','CHR','MAPINFO','UCSC_RefGene_Name')], by.x = 'CpG', by.y = 'Name', sort = FALSE, all.x = TRUE) %>%
@@ -38,12 +38,12 @@ write.csv(menarche_alspac, 'menarche_alspac_v2.csv', row.names = FALSE)
 
 
 
-### Get CpGs from Alspec tanner pheno data
+### Get CpGs from Alspec testes result
 query_cpgs <- testes_alspac$CpG
 
 
 
-#  Merge menarche_alspec and anno together. Then filter
+#  Merge testes_alspac and epic together. Then filter
 #
 #     testes_alspac: 127 x 6
 testes_alspac <- merge(testes_alspac, epic[,c('Name','CHR','MAPINFO','UCSC_RefGene_Name')], by.x = 'CpG', by.y = 'Name', sort = FALSE, all.x = TRUE) %>%
