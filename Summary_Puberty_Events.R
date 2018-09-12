@@ -30,7 +30,7 @@ celltype <- read.csv('~/F1_guthrie850k_cell_24march2018')
 #       pubertyonset_filtered dimensions: 796 x 12
 overlap_subjects <- intersect(pubertyonset$STUDYid, celltype$studyid)
 pubertyonset_filtered <- pubertyonset %>% 
-                              filter(STUDYid %in% overlap_samples)
+                              filter(STUDYid %in% overlap_subjects)
 
 
 
