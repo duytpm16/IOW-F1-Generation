@@ -112,6 +112,14 @@ boy_filteredPubertyOnset_summary <- boy_pubertyOnset %>%
 
 
 
+### Cronbach's alpha
+reliability(cov(data.matrix(boy_pubertyOnset[,3:7]), use = "complete.obs")) # .76
+reliability(cov(data.matrix(boy_pubertyOnset[,3:7]), use = "pairwise.complete.obs")) # .78
+reliability(cov(data.matrix(girl_pubertyOnset[,3:7]), use = "complete.obs")) # .85
+reliability(cov(data.matrix(girl_pubertyOnset[,3:7]), use = "pairwise.complete.obs")) # .83
+
+
+
 ### Save data to .xlsx file
 write.xlsx(pubertyonset, file = 'Summary_Pubert_Events.xlsx', sheetName = 'PubertyEvents', row.names = FALSE)
 write.xlsx(girl_pubertyOnset, file = 'Summary_Pubert_Events.xlsx', sheetName = 'Girl_PubertyEvents', row.names = TRUE, append = TRUE)
