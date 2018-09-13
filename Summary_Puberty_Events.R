@@ -113,7 +113,6 @@ boy_filteredPubertyOnset_summary <- boy_pubertyOnset %>%
 
 
 ### Cronbach's alpha
-### Cronbach's alpha
 alpha(boy_pubertyOnset[,3:7]) # .76 raw 
 alpha(girl_pubertyOnset[,3:7]) # .83 raw
 
