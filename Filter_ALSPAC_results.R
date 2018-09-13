@@ -1,16 +1,33 @@
-
+####################################################################################################################
+# This script annotates the significant CpGs identified by ALSPAC
+#
+# Input:
+#    1.) Illumina EPIC manifest file v1
+#    2.) Alspac significant CpGs for menarche
+#    3.) Alspac significant CpGs for testicular volume
+#
+# Output:
+#    1.) Filtered and annotated CpGs in Input (2)
+#    2.) Filtered and annotated CpGs in Input (3)
+#
+# Author: Duy Pham
+# E-mail: dtpham@memphis.edu
+####################################################################################################################
 options(stringsAsFactors = FALSE)
 library(tidyverse)
 
 
+
+### Read in Illumina EPIC manifest file
 epic <- read.csv("~/MethylationEPIC_v-1-0_B2 YJ.csv")
 
 ### Read in ALSPEC data
 #
 #    menarche_alspac: 525 x 5 -> 525 x 3
-#    testes_alspac:   302 x 5 -? 302 x 3
+#    testes_alspac:   302 x 5 -> 302 x 3
 menarche_alspac <- read.csv("Pheno_menarche_ALSPAC_results.csv")[,-c(1,2)]
 testes_alspac <- read.csv("tanner_Pheno_testes_multilevel_ALSPAC_results.csv")[,-c(1,2)]
+
 
 
 ### Get CpGs from Alspec menarche result
@@ -34,12 +51,6 @@ menarche_alspac <- merge(menarche_alspac, epic[,c('Name','CHR','MAPINFO','UCSC_R
 
 write.csv(menarche_alspac, 'menarche_alspac_v2.csv', row.names = FALSE)
 
-
-
-
-
-### Get CpGs from Alspec testes result
-query_cpgs <- testes_alspac$CpG
 
 
 
