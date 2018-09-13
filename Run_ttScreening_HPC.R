@@ -2,7 +2,7 @@
 #  This script runs the ttScreening function on the HPC given the required input data below
 #      for the IOW cohort F1-generation.
 #  Input:
-#     1.) Path to .RData file containing puberty onset, cell type, and DNAm data
+#     1.) Path to .RData file containing puberty onset, cell type, and DNAm data filtered by gender
 #     2.) Which gender: 'boy' or 'girl'
 #     3.) Name of puberty event column to run ttScreening on
 #
