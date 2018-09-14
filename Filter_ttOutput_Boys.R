@@ -1,3 +1,18 @@
+#################################################################################################################
+#  This script creates a dataframe of CpGs, coefficient, p-value, MapInfo, and UCSC gene name for each of 
+#       the ttScreening output for each pubertal marker.
+#
+#  Input:
+#    1.)   Illumina Methylation EPIC manifest file
+#    2-5.) ttScreening output for the five pubertal markers in boys 
+#
+#  Output:
+#    1.) .RData file of the dataframes generated in Input 2-5
+#
+#  Author: Duy Pham
+#  E-mail: dtpham@memphis.edu
+#################################################################################################################
+
 options(stringsAsFactors = FALSE)
 
 library(plyr)
@@ -32,6 +47,7 @@ boys_bodyhair <- cbind(bodyhair$TT.cpg,
 
 
 
+
 ### Filter ttScreening output for deepening voice in boys
 #
 #       142 x 4
@@ -45,17 +61,20 @@ boys_deepvoice <- cbind(deepvoice$TT.cpg,
                         unite(MapInfo, CHR, MAPINFO, sep = ':')
 
 
+
+
 ### Filter ttScreening output for facial hair in boys
 #
 #      128 x 4
 boys_facialhair <- cbind(facialhair$TT.cpg,
                          facialhair$TT.output %>% select(`Coeff AGEFACIALHAIRMALE_18`, `Pvalue AGEFACIALHAIRMALE_18`)) %>%
-  plyr::rename(c('facialhair$TT.cpg' = 'CpGs_Period',
-                 'Pvalue AGEFACIALHAIRMALE_18' = 'p_value',
-                 'Coeff AGEFACIALHAIRMALE_18' = 'coefficient')) %>%
-  dplyr::arrange(CpGs_Period) %>%
-  merge(epic[,c('Name','CHR','MAPINFO')], by.x = 'CpGs_Period', by.y = 'Name', all.x = TRUE) %>%
-  unite(MapInfo, CHR, MAPINFO, sep = ':')
+                      plyr::rename(c('facialhair$TT.cpg' = 'CpGs_Period',
+                                     'Pvalue AGEFACIALHAIRMALE_18' = 'p_value',
+                                     'Coeff AGEFACIALHAIRMALE_18' = 'coefficient')) %>%
+                      dplyr::arrange(CpGs_Period) %>%
+                      merge(epic[,c('Name','CHR','MAPINFO')], by.x = 'CpGs_Period', by.y = 'Name', all.x = TRUE) %>%
+                      unite(MapInfo, CHR, MAPINFO, sep = ':')
+
 
 
 
