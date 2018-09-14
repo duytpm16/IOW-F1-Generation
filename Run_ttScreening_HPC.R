@@ -67,6 +67,7 @@ if(gender == 'girl'){
 
 
 ### Make formula for ttScreening
+#        ~ Puberty Event + Bcells + NK + monocytes + neutrophils + eosinophils + CD4T
 n <- make.names(names(tempData))
 form <- as.formula(paste("~ ", paste(n, collapse = "+")))
 
