@@ -43,6 +43,11 @@ boys_bodyhair <- cbind(bodyhair$TT.cpg,
                     dplyr::arrange(CpGs_BodyHair) %>%
                     merge(epic[,c('Name','CHR','MAPINFO','UCSC_RefGene_Name')], by.x = 'CpGs_BodyHair', by.y = 'Name', all.x = TRUE) %>%
                     unite(MapInfo, CHR, MAPINFO, sep = ':') %>%
+                    separate_rows(UCSC_RefGene_Name, sep = ";") %>%
+                    distinct() %>%
+                    group_by(CpGs_BodyHair, coefficient, p_value) %>%
+                    mutate(UCSC_RefGene_Name = paste0(UCSC_RefGene_Name, collapse = ',')) %>%
+                    unique() %>%
                     mutate(Gene  = gsub(';',',',UCSC_RefGene_Name)) %>%
                     mutate(MapInfo = paste0('chr',MapInfo)) %>%
                     select(-UCSC_RefGene_Name)
@@ -61,6 +66,11 @@ boys_deepvoice <- cbind(deepvoice$TT.cpg,
                         dplyr::arrange(CpGs_DeepVoice) %>%
                         merge(epic[,c('Name','CHR','MAPINFO','UCSC_RefGene_Name')], by.x = 'CpGs_DeepVoice', by.y = 'Name', all.x = TRUE) %>%
                         unite(MapInfo, CHR, MAPINFO, sep = ':') %>%
+                        separate_rows(UCSC_RefGene_Name, sep = ";") %>%
+                        distinct() %>%
+                        group_by(CpGs_DeepVoice, coefficient, p_value) %>%
+                        mutate(UCSC_RefGene_Name = paste0(UCSC_RefGene_Name, collapse = ',')) %>%
+                        unique() %>%
                         mutate(Gene  = gsub(';',',',UCSC_RefGene_Name)) %>%
                         mutate(MapInfo = paste0('chr',MapInfo)) %>%
                         select(-UCSC_RefGene_Name)
@@ -79,6 +89,11 @@ boys_facialhair <- cbind(facialhair$TT.cpg,
                       dplyr::arrange(CpGs_Period) %>%
                       merge(epic[,c('Name','CHR','MAPINFO', 'UCSC_RefGene_Name')], by.x = 'CpGs_Period', by.y = 'Name', all.x = TRUE) %>%
                       unite(MapInfo, CHR, MAPINFO, sep = ':') %>%
+                      separate_rows(UCSC_RefGene_Name, sep = ";") %>%
+                      distinct() %>%
+                      group_by(CpGs_FacialHair, coefficient, p_value) %>%
+                      mutate(UCSC_RefGene_Name = paste0(UCSC_RefGene_Name, collapse = ',')) %>%
+                      unique() %>%
                       mutate(Gene  = gsub(';',',',UCSC_RefGene_Name)) %>%
                       mutate(MapInfo = paste0('chr',MapInfo)) %>%
                       select(-UCSC_RefGene_Name)
@@ -97,10 +112,14 @@ boys_growthspurt <- cbind(growthspurt$TT.cpg,
                         dplyr::arrange(CpGs_GrowthSpurt) %>%
                         merge(epic[,c('Name','CHR','MAPINFO','UCSC_RefGene_Name')], by.x = 'CpGs_GrowthSpurt', by.y = 'Name', all.x = TRUE) %>%
                         unite(MapInfo, CHR, MAPINFO, sep = ':') %>%
+                        separate_rows(UCSC_RefGene_Name, sep = ";") %>%
+                        distinct() %>%
+                        group_by(CpGs_GrowthSpurt, coefficient, p_value) %>%
+                        mutate(UCSC_RefGene_Name = paste0(UCSC_RefGene_Name, collapse = ',')) %>%
+                        unique() %>%
                         mutate(Gene  = gsub(';',',',UCSC_RefGene_Name)) %>%
                         mutate(MapInfo = paste0('chr',MapInfo)) %>%
                         select(-UCSC_RefGene_Name)
-
 
 
 
@@ -115,6 +134,11 @@ boys_skinchanges <- cbind(skinchanges$TT.cpg,
                       dplyr::arrange(CpGs_SkinChanges) %>%
                       merge(epic[,c('Name','CHR','MAPINFO','UCSC_RefGene_Name')], by.x = 'CpGs_SkinChanges', by.y = 'Name', all.x = TRUE) %>%
                       unite(MapInfo, CHR, MAPINFO, sep = ':') %>%
+                      separate_rows(UCSC_RefGene_Name, sep = ";") %>%
+                      distinct() %>%
+                      group_by(CpGs_SkinChanges, coefficient, p_value) %>%
+                      mutate(UCSC_RefGene_Name = paste0(UCSC_RefGene_Name, collapse = ',')) %>%
+                      unique() %>%
                       mutate(Gene  = gsub(';',',',UCSC_RefGene_Name)) %>%
                       mutate(MapInfo = paste0('chr',MapInfo)) %>%
                       select(-UCSC_RefGene_Name)
