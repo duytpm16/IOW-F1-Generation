@@ -122,4 +122,4 @@ boys_skinchanges <- cbind(skinchanges$TT.cpg,
 
 
 ### Save data
-save(boys_bodyhair,boys_deepvoice,boys_facialhair,boys_growthspurt,boys_skinchanges, file = 'ttOut_Autosome_Boys.RData')
+save(boys_bodyhair,boys_deepvoice,boys_facialhair,boys_growthspurt,boys_skinchanges, file = 'ttOut_Autosome_Boys_850k_401.RData')
