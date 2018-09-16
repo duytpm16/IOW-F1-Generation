@@ -40,9 +40,9 @@ aft_prediction <- function(var, y, x, split){
         # Randomly select split percentage from index
         trainInd <- sample(index, index_length * split)
       
-        # Split data into training/testing based on split
-        train_surv_mat <- surv_mat[trainInd,]
-        test_surv_mat <- surv_mat[index[-trainInd],]
+        # Use the randomly selected 80% row indices to get data for the training set
+        train_surv_mat <- surv_mat[trainInd,,drop = FALSE]
+        test_surv_mat <- surv_mat[index[-trainInd],,drop = FALSE]
     
         
         
@@ -51,7 +51,7 @@ aft_prediction <- function(var, y, x, split){
 
         
         # Predict using AFT model and testing set
-        aft_predict <- predict(aft_fit, test_surv_mat %>% select(-resp, -status))
+        aft_predict <- predict(aft_fit, test_surv_mat[,!(colnames(test_surv_mat) %in% c('resp','status'))])
     
         
         
@@ -62,7 +62,6 @@ aft_prediction <- function(var, y, x, split){
 
 
 } # aft_prediction()
-
 
 
 
