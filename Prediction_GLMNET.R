@@ -53,14 +53,14 @@ glmnet_prediction <- function(y, x, split, alpha, penalty.factor = NULL){
           
           
           # Fit a lasso regression. Use default cross-validation to find optimal lambda
-          lasso.fit <- cv.glmnet(train_x,train_y, alpha = alpha, penalty.factor = penalty.factor)
+          fit <- cv.glmnet(train_x,train_y, alpha = alpha, penalty.factor = penalty.factor)
             
           
           # Predict the test set
-          lm.predict <- predict(lasso.fit,test_x, s=lasso.fit$lambda.1se)
+          lm.predict <- predict(fit,test_x, s=fit$lambda.1se)
             
             
-          reg.coeff[i,] <- as.vector(coef(lasso.fit))
+          reg.coeff[i,] <- as.vector(coef(fit))
           
                 
           # Compute the MSE and store into MSE
@@ -70,7 +70,7 @@ glmnet_prediction <- function(y, x, split, alpha, penalty.factor = NULL){
       
       
       
-      colnames(reg.coeff) <- dimnames(coef(lasso.fit))[[1]]
+      colnames(reg.coeff) <- dimnames(coef(fit))[[1]]
       cg_freqency <- colSums(reg.coeff != 0 )
       cg_freqency <- cg_freqency[order(cg_freqency, decreasing = TRUE)]
       
