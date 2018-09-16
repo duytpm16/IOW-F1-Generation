@@ -52,7 +52,7 @@ glmnet_prediction <- function(y, x, split, alpha, penalty.factor = NULL){
             
           
           
-          # Fit a lasso regression. Use default cross-validation to find optimal lambda
+          # Fit a glmnet model. Use default cross-validation to find optimal lambda
           fit <- cv.glmnet(train_x,train_y, alpha = alpha, penalty.factor = penalty.factor)
             
           
