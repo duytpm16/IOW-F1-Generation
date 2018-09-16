@@ -47,7 +47,7 @@ aft_prediction <- function(var, y, x, split){
         
         
         # Fit AFT model
-        aft_fit <- survreg(Surv(resp, status) ~., data = surv_mat, dist = 'weibull')
+        aft_fit <- survreg(Surv(resp, status) ~., data = train_surv_mat, dist = 'weibull')
 
         
         # Predict using AFT model and testing set
